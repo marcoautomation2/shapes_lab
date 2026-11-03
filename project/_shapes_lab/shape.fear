@@ -1,0 +1,61 @@
+///Lesson 1: a sealed type.
+///A `Shape` is a figure made of unit cells on a grid.
+///`Shape` extends `Sealed`: only this package can write a type that extends `Shape`.
+///Code of other packages can call the methods of a `Shape` and can get one from `Shapes`, but can not make a new kind of `Shape`.
+///So the kinds are exactly the three methods of `ShapeMatch`, and every `.match` can handle all of them.
+Shape: Sealed {
+  ///Runs the method of ``m`` that names the kind of this shape, and returns the result of that method.
+  ///This is the only way to ask which kind a shape is.
+  //> .check{Shapes.square(3).match{.rect(w, h) -> "rect"; .square(s) -> "square"; .plus(a) -> "plus"} .assertEq "square"}
+  .match[R:**](m: mut ShapeMatch[R]): R;
+  ///How many unit cells the shape covers.
+  //> .check{Shapes.rect(3, 2).area .assertEq 6}
+  //> .check{Shapes.square(4).area .assertEq 16}
+  //> .check{Shapes.plus(2).area .assertEq 9}
+  .area: Nat -> this.match{
+    .rect(w, h) -> w * h;
+    .square(s) -> s * s;
+    .plus(a) -> (a * 4) + 1;
+    };
+  ///The width of the smallest rectangle holding the shape.
+  //> .check{Shapes.plus(2).width .assertEq 5}
+  .width: Nat -> this.match{
+    .rect(w, h) -> w;
+    .square(s) -> s;
+    .plus(a) -> (a * 2) + 1;
+    };
+  ///The height of the smallest rectangle holding the shape.
+  //> .check{Shapes.rect(3, 2).height .assertEq 2}
+  .height: Nat -> this.match{
+    .rect(w, h) -> h;
+    .square(s) -> s;
+    .plus(a) -> (a * 2) + 1;
+    };
+  ///The length of the border of the shape.
+  ///The border of a plus is as long as the border of the rectangle holding the plus.
+  //> .check{Shapes.rect(3, 2).perimeter .assertEq 10}
+  //> .check{Shapes.plus(1).perimeter .assertEq 12}
+  .perimeter: Nat -> (this.width + (this.height)) * 2;
+  ///The shape with every length multiplied by `factor`.
+  //> .check{Shapes.rect(3, 2).scale(2).area .assertEq 24}
+  //> .check{Shapes.plus(1).scale(3).width .assertEq 7}
+  .scale(factor: Nat): Shape -> this.match{
+    .rect(w, h) -> Shapes.rect(w * factor, h * factor);
+    .square(s) -> Shapes.square(s * factor);
+    .plus(a) -> Shapes.plus(a * factor);
+    };
+  ///A short description of the shape.
+  //> .check{Shapes.rect(3, 2).describe .assertEq "rect 3x2"}
+  //> .check{Shapes.plus(2).describe .assertEq "plus 2"}
+  .describe: Str -> this.match{
+    .rect(w, h) -> "rect " + (w.str) + "x" + (h.str);
+    .square(s) -> "square " + (s.str);
+    .plus(a) -> "plus " + (a.str);
+    };
+  }
+///The questions a `.match` of a `Shape` answers: one method for each kind of shape.
+ShapeMatch[R:**]: {
+  mut .rect(w: Nat, h: Nat): R;
+  mut .square(side: Nat): R;
+  mut .plus(arm: Nat): R;
+  }

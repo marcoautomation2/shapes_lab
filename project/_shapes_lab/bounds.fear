@@ -1,0 +1,15 @@
+///Lesson 3: working with lists of sealed types.
+///The methods here only use the public methods of `Shape`, so they work for every kind of shape, including kinds added to the package later.
+Bounds: {
+  ///The total area of `shapes`.
+  //> .check{Bounds.totalArea(Lists#(Shapes.rect(3, 2), Shapes.square(2))) .assertEq 10}
+  //> .check{Bounds.totalArea(Lists#(Shapes.plus(1))) .assertEq 5}
+  .totalArea(shapes: List[Shape]): Nat -> shapes.flow.map{s -> s.area}.fold[Nat]({0}, {acc, a -> acc + a});
+  ///The area of the biggest shape of `shapes`, or 0 when `shapes` has no shape.
+  //> .check{Bounds.biggestArea(Lists#(Shapes.rect(3, 2), Shapes.square(3), Shapes.plus(1))) .assertEq 9}
+  //> .check{Bounds.biggestArea(Lists#(Shapes.plus(1))) .assertEq 5}
+  .biggestArea(shapes: List[Shape]): Nat -> shapes.flow.map{s -> s.area}.max{::}.first.orValue 0;
+  ///The descriptions of `shapes`, in the same order.
+  //> .check{Bounds.descriptions(Lists#(Shapes.rect(3, 2), Shapes.plus(1))) .assertEq({::}, Lists#("rect 3x2", "plus 1"))}
+  .descriptions(shapes: List[Shape]): List[Str] -> shapes.flow.map{s -> s.describe}.list;
+  }

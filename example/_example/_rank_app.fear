@@ -1,0 +1,18 @@
+use base.Main as Main;
+use base.Void as Void;
+use base.Debug as Debug;
+use base.Block as Block;
+use base.List as List;
+use base.Lists as Lists;
+use shapes_lab.Shape as Shape;
+use shapes_lab.Shapes as Shapes;
+use shapes_lab.Bounds as Bounds;
+
+ShapesLabExample:Main{sys-> Block#
+  .let[List[Shape]] shapes= { Lists#(Shapes.rect(3, 2), Shapes.square(4), Shapes.plus(2)) }
+  .do{Debug#(Bounds.descriptions(shapes).str{::})}
+  .do{Debug#(Bounds.totalArea shapes)}
+  .do{Debug#(Bounds.biggestArea shapes)}
+  .do{Debug#(Shapes.plus(1).scale(3).describe)}
+  .return{Void}
+  }

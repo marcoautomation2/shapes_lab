@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shapes Lab - Fearless Demos</title>
+<meta name="description" content="A teaching library about sealed types: grid shapes with area, perimeter and bounding boxes, written to be read.">
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#1b1f2a;--muted:#5b6275;--line:#dfe3ee;--accent:#4f46e5;--accent-ink:#fff;--chip:#eceefb;--code:#eef0f7}
+@media (prefers-color-scheme:dark){:root{--bg:#10131c;--card:#181c28;--ink:#e8eaf2;--muted:#9aa2b8;--line:#2a3042;--accent:#8b85ff;--accent-ink:#10131c;--chip:#232942;--code:#0c0f17}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{border-bottom:1px solid var(--line);background:var(--card)}
+.bar{max-width:46rem;margin:0 auto;padding:.9rem 1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.bar a{color:var(--ink);text-decoration:none;font-weight:650}
+.bar a+a{color:var(--muted);font-weight:500}
+main{max-width:46rem;margin:0 auto;padding:2rem 1rem 4rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
+.kind{margin:0;color:var(--accent);font-weight:650;letter-spacing:.04em;text-transform:uppercase;font-size:.8rem}
+h1{margin:.2rem 0 .6rem;font-size:2rem;line-height:1.2}
+h2{margin:2rem 0 .5rem;font-size:1.1rem}
+.lead{margin:0 0 1.2rem;color:var(--muted);font-size:1.1rem}
+.meta{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0 0 1.4rem;padding:0}
+.meta li{background:var(--chip);border-radius:999px;padding:.15rem .7rem;font-size:.85rem}
+.meta code{font-family:ui-monospace,Consolas,monospace}
+.button{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.7rem 1.3rem;border-radius:10px;text-decoration:none;font-weight:650}
+.button:hover{filter:brightness(1.08)}
+.button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.file{margin:.6rem 0 0;color:var(--muted);font:.85rem ui-monospace,Consolas,monospace}
+a{color:var(--accent)}
+li{margin:.25rem 0}
+code{background:var(--code);border-radius:5px;padding:.05rem .35rem;font-size:.9em}
+</style>
+</head>
+<body>
+<header><div class="bar"><a href="https://marcoservetto.github.io/fearless_demos/">Fearless Demos</a><a href="https://github.com/marcoautomation2/shapes_lab">Source on GitHub</a></div></header>
+<main>
+<div class="card">
+<p class="kind">Educational library</p>
+<h1>Shapes Lab</h1>
+<p class="lead">A teaching library about sealed types: grid shapes with area, perimeter and bounding boxes, written to be read.</p>
+<ul class="meta"><li>rank <code>worker100</code></li><li>education</li><li>geometry</li><li>sealed types</li></ul>
+<a class="button" href="shapes_lab_edu_lib.zip" download>Download the zip</a>
+<p class="file">shapes_lab_edu_lib.zip</p>
+<h2>How to use it</h2>
+<ol>
+<li>Download the zip.</li>
+<li>Copy the zip into a Fearless project, zipped or unzipped. The code of the project can then use the library.</li>
+<li>Write <code>use shapes_lab.TypeName as TypeName;</code> in the rank file of the package that needs the library.</li>
+</ol>
+<p>The package of the project needs a rank higher than <code>worker100</code>. Every app qualifies.</p>
+<h2>What is inside</h2>
+<ol>
+<li><code>shape.fear</code>: a sealed type and its <code>.match</code>.</li>
+<li><code>shapes.fear</code>: factories that hide the kinds.</li>
+<li><code>bounds.fear</code>: working with lists of sealed types.</li>
+</ol>
+<p>Every method has an example in its doc comment. The folder <code>example</code> of the source holds a small app that uses the library.</p>
+</div>
+</main>
+</body>
+</html>

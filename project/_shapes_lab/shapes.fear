@@ -1,0 +1,12 @@
+///Lesson 2: factories hide the kinds.
+///Each factory method returns a `Shape` and nothing more specific, so the code using a `Shape` never depends on how the kinds are written.
+///The kinds are made by one-line object literals that call the matching method of the `ShapeMatch`.
+Shapes: {
+  ///A rectangle of `w` cells by `h` cells.
+  //> .check{Shapes.rect(3, 2).describe .assertEq "rect 3x2"}
+  .rect(w: Nat, h: Nat): Shape -> Shape{ ::.rect(w, h) };
+  ///A square of `side` cells by `side` cells.
+  .square(side: Nat): Shape -> Shape{ ::.square side };
+  ///A plus: one centre cell and four arms, each arm with `arm` cells.
+  .plus(arm: Nat): Shape -> Shape{ ::.plus arm };
+  }
