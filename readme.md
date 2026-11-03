@@ -6,8 +6,10 @@ The demo is listed in the storefront https://marcoservetto.github.io/fearless_de
 
 ## Use
 
-Download `shapes_lab_edu_lib.zip` from https://marcoautomation2.github.io/shapes_lab/.
-Copy the zip into a Fearless project, zipped or unzipped.
+The URL of the zip is https://marcoautomation2.github.io/shapes_lab/shapes_lab_edu_lib.zip.
+The page https://marcoautomation2.github.io/shapes_lab/ has a button that copies the URL.
+Import the URL into a Fearless project with the Fearless manager.
+The zip also works by hand: copy the zip, zipped or unzipped, into the project.
 Write `use shapes_lab.Shapes as Shapes;` in the rank file of the package that needs `Shapes`.
 The package that uses the library needs a rank higher than `worker100`.
 Every package of rank `app` qualifies.

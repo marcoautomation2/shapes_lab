@@ -24,7 +24,7 @@ h2{margin:2rem 0 .5rem;font-size:1.1rem}
 .meta{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0 0 1.4rem;padding:0}
 .meta li{background:var(--chip);border-radius:999px;padding:.15rem .7rem;font-size:.85rem}
 .meta code{font-family:ui-monospace,Consolas,monospace}
-.button{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:.7rem 1.3rem;border-radius:10px;text-decoration:none;font-weight:650}
+.button{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:650;min-width:8.5rem;background:var(--accent);color:var(--accent-ink);padding:.7rem 1.3rem;border-radius:10px;text-decoration:none}
 .button:hover{filter:brightness(1.08)}
 .button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .file{margin:.6rem 0 0;color:var(--muted);font:.85rem ui-monospace,Consolas,monospace}
@@ -41,15 +41,16 @@ code{background:var(--code);border-radius:5px;padding:.05rem .35rem;font-size:.9
 <h1>Shapes Lab</h1>
 <p class="lead">A teaching library about sealed types: grid shapes with area, perimeter and bounding boxes, written to be read.</p>
 <ul class="meta"><li>rank <code>worker100</code></li><li>education</li><li>geometry</li><li>sealed types</li></ul>
-<a class="button" href="shapes_lab_edu_lib.zip" download>Download the zip</a>
-<p class="file">shapes_lab_edu_lib.zip</p>
+<button class="button" type="button" id="copy" data-zip="shapes_lab_edu_lib.zip">Copy URL</button>
+<p class="file">https://marcoautomation2.github.io/shapes_lab/shapes_lab_edu_lib.zip</p>
 <h2>How to use it</h2>
 <ol>
-<li>Download the zip.</li>
-<li>Copy the zip into a Fearless project, zipped or unzipped. The code of the project can then use the library.</li>
+<li>Press Copy URL.</li>
+<li>Import the URL into a Fearless project with the Fearless manager. The code of the project can then use the library.</li>
 <li>Write <code>use shapes_lab.TypeName as TypeName;</code> in the rank file of the package that needs the library.</li>
 </ol>
 <p>The package of the project needs a rank higher than <code>worker100</code>. Every app qualifies.</p>
+<p>The zip also works by hand: copy the zip, zipped or unzipped, into the project.</p>
 <h2>What is inside</h2>
 <ol>
 <li><code>shape.fear</code>: a sealed type and its <code>.match</code>.</li>
@@ -59,5 +60,13 @@ code{background:var(--code);border-radius:5px;padding:.05rem .35rem;font-size:.9
 <p>Every method has an example in its doc comment. The folder <code>example</code> of the source holds a small app that uses the library.</p>
 </div>
 </main>
+<script>
+const button=document.getElementById("copy");
+button.addEventListener("click",async()=>{
+  const copied=await navigator.clipboard.writeText(new URL(button.dataset.zip,location.href).href).then(()=>true,()=>false);
+  button.textContent=copied?"Copied":"Copy failed";
+  setTimeout(()=>{button.textContent="Copy URL"},2000);
+});
+</script>
 </body>
 </html>
