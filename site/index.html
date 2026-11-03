@@ -5,15 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shapes Lab - Fearless Demos</title>
 <meta name="description" content="A teaching library about sealed types: grid shapes with area, perimeter and bounding boxes, written to be read.">
-<link rel="icon" href="data:,">
+<link rel="icon" href="icon.png" type="image/png">
 <style>
-:root{--bg:#f6f7fb;--card:#fff;--ink:#1b1f2a;--muted:#5b6275;--line:#dfe3ee;--accent:#4f46e5;--accent-ink:#fff;--chip:#eceefb;--code:#eef0f7}
-@media (prefers-color-scheme:dark){:root{--bg:#10131c;--card:#181c28;--ink:#e8eaf2;--muted:#9aa2b8;--line:#2a3042;--accent:#8b85ff;--accent-ink:#10131c;--chip:#232942;--code:#0c0f17}}
+:root{--bg:#f6f6f3;--card:#fff;--ink:#1b2027;--muted:#4a525c;--line:#d8d6cf;--accent:#35658c;--accent-ink:#fff;--chip:#e1eaf2;--code:#eceae5}
+@media (prefers-color-scheme:dark){:root{--bg:#111519;--card:#191f25;--ink:#e7e9ec;--muted:#a4acb6;--line:#323b45;--accent:#86afd0;--accent-ink:#0e151c;--chip:#1f3547;--code:#0b0e12}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 header{border-bottom:1px solid var(--line);background:var(--card)}
 .bar{max-width:46rem;margin:0 auto;padding:.9rem 1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .bar a{color:var(--ink);text-decoration:none;font-weight:650}
+.bar img{display:block}
+.brand{display:inline-flex;align-items:center;gap:.6rem}
 .bar a+a{color:var(--muted);font-weight:500}
 main{max-width:46rem;margin:0 auto;padding:2rem 1rem 4rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
@@ -34,7 +36,7 @@ code{background:var(--code);border-radius:5px;padding:.05rem .35rem;font-size:.9
 </style>
 </head>
 <body>
-<header><div class="bar"><a href="https://marcoservetto.github.io/fearless_demos/">Fearless Demos</a><a href="https://github.com/marcoautomation2/shapes_lab">Source on GitHub</a></div></header>
+<header><div class="bar"><a class="brand" href="https://marcoservetto.github.io/fearless_demos/"><img src="icon.png" alt="" width="28" height="28">Fearless Demos</a><a href="https://github.com/marcoautomation2/shapes_lab">Source on GitHub</a></div></header>
 <main>
 <div class="card">
 <p class="kind">Educational library</p>
